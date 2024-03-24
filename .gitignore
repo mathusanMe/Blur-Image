@@ -1,3 +1,9 @@
+# Own config
+images/optimized/blurred
+images/optimized/unblurred
+images/unoptimized/blurred
+images/unoptimized/unblurred
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
