@@ -1,8 +1,5 @@
 # Own config
-images/optimized/blurred
-images/optimized/unblurred
-images/unoptimized/blurred
-images/unoptimized/unblurred
+images/processed
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
