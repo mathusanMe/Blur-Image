@@ -1,43 +1,5 @@
 import numpy as np
-from scipy.signal import convolve2d
-from utils import load_image, save_image, show_image
-
-
-def kernel_average(size=3):
-    """
-    Crée un noyau moyenneur: matrice où tous les éléments ont une valeur égale, contribuant également à la sortie.
-
-    Lisse l'image en moyennant les pixels sous la zone du noyau
-
-    Args:
-        size: taille du noyau. Doit être un nombre impair.
-    """
-
-    if size % 2 == 0:
-        raise ValueError("La taille du noyau doit être un nombre impair.")
-
-    return np.ones((size, size)) / (size * size)
-
-
-def kernel_gaussian(size=3, sigma=1.0):
-    """
-    Crée un noyau gaussien: matrice où les éléments centraux ont des valeurs plus élevées avec une
-    diminution vers les bords, suivant une distribution gaussienne.
-
-    Réduit le bruit et les détails de l'image.
-
-    Args:
-        size: taille du noyau. Doit être un nombre impair.
-        sigma: écart-type de la distribution gaussienne
-    """
-
-    if size % 2 == 0:
-        raise ValueError("La taille du noyau doit être un nombre impair.")
-
-    ax = np.linspace(-(size - 1) / 2.0, (size - 1) / 2.0, size)
-    gauss = np.exp(-0.5 * np.square(ax) / np.square(sigma))
-    kernel = np.outer(gauss, gauss)
-    return kernel / np.sum(kernel)
+from kernels import Kernel
 
 
 def apply_kernel(image_array, kernel, border_handling="fill", fill_value=0):
@@ -135,3 +97,42 @@ def apply_kernel(image_array, kernel, border_handling="fill", fill_value=0):
                 )
 
     return result
+
+
+def convolve2d(image, kernel, mode="same", boundary="wrap"):
+    """
+    Manually apply a convolution kernel to an image, ensuring it mimics the behavior of scipy.signal.convolve2d,
+    including handling of boundary conditions and flipping the kernel for convolution.
+
+    Parameters:
+    - image: A 2D numpy array representing the grayscale image.
+    - kernel: A 2D numpy array representing the convolution kernel.
+
+    Returns:
+    - output: A 2D numpy array representing the convolved image.
+    """
+
+    kernel = np.flipud(np.fliplr(kernel))  # Flip the kernel
+    output = np.zeros_like(image)  # Prepare the output array
+
+    # Determine padding width
+    if mode == "same":
+        pad_height = kernel.shape[0] // 2
+        pad_width = kernel.shape[1] // 2
+        padded_image = np.pad(
+            image, ((pad_height, pad_height), (pad_width, pad_width)), mode=boundary
+        )
+    else:
+        # For simplicity, other modes are not implemented
+        raise ValueError(
+            "Unsupported mode. Only 'same' is supported with 'wrap' boundary condition."
+        )
+
+    # Convolve the padded image with the kernel
+    for x in range(image.shape[1]):  # Loop over every pixel of the image
+        for y in range(image.shape[0]):
+            # Extract the current region of interest
+            region = padded_image[y : y + kernel.shape[0], x : x + kernel.shape[1]]
+            output[y, x] = np.sum(region * kernel)
+
+    return output
