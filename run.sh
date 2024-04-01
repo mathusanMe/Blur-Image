@@ -1,1 +1,1 @@
-python3 src/core.py
+python3 blur_image/core.py
