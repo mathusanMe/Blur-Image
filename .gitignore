@@ -1,5 +1,7 @@
 # Own config
-images/processed
+processed
+
+.DS_Store
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
