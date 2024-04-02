@@ -53,11 +53,15 @@ def process_images(
             )
 
             # Save the processed image
+            if action == "blur":
+                new_filename = f"{filename_only}_{(kernel_inst.name).lower()}_{action}{extension}"
+            elif action == "unblur":
+                new_filename = f"{filename_only}_{(kernel_inst.name).lower()}_{action}_{iterations}-iter{extension}"
             save_image(
                 processed_image,
                 os.path.join(
                     output_folder,
-                    f"{filename_only}_{(kernel_inst.name).lower()}_{action}{extension}",
+                    new_filename,
                 ),
             )
 
@@ -72,8 +76,8 @@ if __name__ == "__main__":
     kernels = [
         kernel_average(size=3),
         kernel_average(size=5),
-        kernel_gaussian(size=5, sigma=1.0),
-        kernel_gaussian(size=5, sigma=2.0),
+        kernel_gaussian(size=3, sigma=1.0),
+        kernel_gaussian(size=3, sigma=2.0),
     ]
 
     # Apply a blur to the images in the input folder and save them
@@ -88,4 +92,11 @@ if __name__ == "__main__":
             kernel,
             "unblur",
             iterations=10,
+        )
+        process_images(
+            output_folder_blurred,
+            output_folder_unblurred,
+            kernel,
+            "unblur",
+            iterations=20,
         )
