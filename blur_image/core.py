@@ -1,102 +1,79 @@
 import os
 from utils import load_image, save_image
-
-from kernels import Kernel, kernel_average, kernel_gaussian, apply_kernel
+from image_processing.kernels import Kernel, apply_kernel, kernel_average, kernel_gaussian
 from image_processing.richardson_lucy import RichardsonLucy
 
 
-def process_images(
-    input_folder, output_folder, kernel_inst: Kernel, action, iterations=10
-):
-    """
-    Process images by blurring or unblurring based on the given action.
+class ImageProcessor:
+    def __init__(self, input_folder, output_folder):
+        self.input_folder = input_folder
+        self.output_folder = output_folder
 
-    :param input_folder: The folder containing the images to process.
-    :type input_folder: str
-    :param output_folder: The folder where processed images will be saved.
-    :type output_folder: str
-    :param kernel_inst: The kernel instance to use for blurring or unblurring.
-    :type kernel_inst: Kernel
-    :param action: The action to perform - either "blur" or "unblur".
-    :type action: str
-    :raises ValueError: If an invalid action is specified.
-    """
-    # Ensure the output folder exists
-    if not os.path.exists(output_folder):
-        os.makedirs(output_folder)
+    def process_image(self, image_path, kernel_obj, iterations_list):
+        image = load_image(image_path)
+        filename = os.path.basename(image_path)
+        image_output_folder = os.path.join(
+            self.output_folder, os.path.splitext(filename)[0]
+        )
 
-    # Process each image in the input folder
-    for filename in os.listdir(input_folder):
-        if filename.endswith((".png", ".jpg", ".jpeg", ".webp")):
-            image_path = os.path.join(input_folder, filename)
-            image = load_image(image_path)
+        kernel_folder_name = str(kernel_obj)
+        kernel_output_folder = os.path.join(image_output_folder, kernel_folder_name)
 
-            if action == "blur":
-                # Apply blurring
-                processed_image = apply_kernel(
-                    image, kernel_inst.kernel, border_handling="wrap"
-                )
-            elif action == "unblur":
-                # Apply unblurring (deconvolution)
-                rl = RichardsonLucy(image, kernel_inst.kernel, iterations)
-                processed_image = rl.apply()
-            else:
-                raise ValueError(
-                    "Invalid action specified. Choose either 'blur' or 'unblur'."
-                )
+        if not os.path.exists(kernel_output_folder):
+            os.makedirs(kernel_output_folder)
 
-            # Split the filename and extension
-            splitted_filename = os.path.splitext(filename)
-            filename_only, extension = (
-                "".join(splitted_filename[:-1]),
-                splitted_filename[-1],
+        # Blurring
+        print(f"Blurring image with {kernel_obj}")
+        blurred_image = apply_kernel(image, kernel_obj.kernel, border_handling="wrap")
+        blurred_image_path = os.path.join(kernel_output_folder, "blurred.png")
+        save_image(blurred_image, blurred_image_path)
+
+        # Unblurring with specified iterations
+        for iterations in iterations_list:
+            print(f"Unblurring image with {kernel_obj} and {iterations} iterations")
+            rl = RichardsonLucy(image, kernel_obj.kernel, iterations)
+            unblurred_image = rl.apply()
+            unblurred_image_path = os.path.join(
+                kernel_output_folder, f"unblurred_{iterations}-iter.png"
             )
+            save_image(unblurred_image, unblurred_image_path)
 
-            # Save the processed image
-            if action == "blur":
-                new_filename = f"{filename_only}_{(kernel_inst.name).lower()}_{action}{extension}"
-            elif action == "unblur":
-                new_filename = f"{filename_only}_{(kernel_inst.name).lower()}_{action}_{iterations}-iter{extension}"
-            save_image(
-                processed_image,
-                os.path.join(
-                    output_folder,
-                    new_filename,
-                ),
-            )
+    def process_folder(self, kernels, iterations_list):
+        for filename in os.listdir(self.input_folder):
+            if filename.endswith((".png", ".jpg", ".jpeg", ".webp")):
+                print(f"############### Processing image: {filename} ###############")
+
+                image_path = os.path.join(self.input_folder, filename)
+                image_output_folder = os.path.join(
+                    self.output_folder, os.path.splitext(filename)[0]
+                )
+
+                if not os.path.exists(image_output_folder):
+                    os.makedirs(image_output_folder)
+
+                for kernel in kernels:
+                    self.process_image(image_path, kernel, iterations_list)
 
 
 if __name__ == "__main__":
+    input_folder = "originals"
+    output_folder = "processed"
 
-    input_folder = "resources"
-    output_folder_blurred = "processed/blurred"
-    output_folder_unblurred = "processed/unblurred"
-
-    # Define the kernel to use for blurring and unblurring
+    # Example kernels
     kernels = [
-        kernel_average(size=3),
-        kernel_average(size=5),
-        kernel_gaussian(size=3, sigma=1.0),
-        kernel_gaussian(size=3, sigma=2.0),
+        kernel_average(3),
+        kernel_average(5),
+        kernel_gaussian(3, 1.0),
+        kernel_gaussian(5, 1.0),
+        kernel_gaussian(3, 2.0),
+        kernel_gaussian(5, 2.0),
     ]
 
-    # Apply a blur to the images in the input folder and save them
-    for kernel in kernels:
-        process_images(input_folder, output_folder_blurred, kernel, "blur")
+    iterations_list = [
+        5,
+        10,
+        15,
+    ]  # Number of iterations for Richardson-Lucy deconvolution
 
-    # Apply an unblur to the blurred images and save them
-    for kernel in kernels:
-        process_images(
-            output_folder_blurred,
-            output_folder_unblurred,
-            kernel,
-            "unblur",
-            iterations=10,
-        )
-        process_images(
-            output_folder_blurred,
-            output_folder_unblurred,
-            kernel,
-            "unblur",
-            iterations=20,
-        )
+    processor = ImageProcessor(input_folder, output_folder)
+    processor.process_folder(kernels, iterations_list)

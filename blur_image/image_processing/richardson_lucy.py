@@ -53,14 +53,28 @@ class RichardsonLucy:
         :return: The deblurred channel.
         :rtype: numpy.ndarray
         """
+        original_mean = np.mean(channel)
+        original_std = np.std(channel)
+
         estimate = np.copy(channel)
-        psf_mirror = np.flipud(np.fliplr(self.psf))  # Mirrored PSF for the convolution
+        psf_mirror = np.flipud(np.fliplr(self.psf))
 
         for _ in range(self.iterations):
             convolved_estimate = self._convolve2d(estimate, self.psf)
             relative_blur = channel / (convolved_estimate + 1e-12)
             error_estimate = self._convolve2d(relative_blur, psf_mirror)
             estimate = estimate * error_estimate
+
+            # Incremental lighting and contrast correction
+            estimate_mean = np.mean(estimate)
+            estimate_std = np.std(estimate)
+
+            if estimate_mean > 0 and estimate_std > 0:
+                mean_correction_factor = original_mean / estimate_mean
+                std_correction_factor = original_std / estimate_std
+                estimate = (estimate * mean_correction_factor) * std_correction_factor
+                # Ensure the correction does not push values beyond the valid range
+                estimate = np.clip(estimate, 0, 255)  # Assuming 8-bit image
 
         return estimate
 

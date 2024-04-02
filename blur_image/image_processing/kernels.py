@@ -2,7 +2,7 @@ import numpy as np
 
 
 class Kernel:
-    def __init__(self, name, kernel):
+    def __init__(self, name, kernel, kernel_size, sigma=None):
         """
         Create a new Kernel object with a given name and kernel matrix.
 
@@ -10,9 +10,19 @@ class Kernel:
         :type name: str
         :param kernel: The kernel matrix.
         :type kernel: ndarray
+        :param kernel_size: The size of the kernel matrix.
+        :type kernel_size: int
         """
-        self.name = name.lower()
+        self.name = name
         self.kernel = kernel
+        self.size = kernel_size
+        self.sigma = sigma
+
+    def __str__(self):
+        if self.sigma is not None:
+            return f"{self.name}_{self.size}x{self.size}_sigma{self.sigma}"
+        else:
+            return f"{self.name}_{self.size}x{self.size}"
 
 
 ### KERNEL FUNCTIONS ###
@@ -33,7 +43,7 @@ def kernel_average(size=3):
         raise ValueError("Kernel size must be an odd number.")
 
     kernel_matrix = np.ones((size, size)) / (size * size)
-    return Kernel(f"average_{size}x{size}", kernel_matrix)
+    return Kernel(f"average", kernel_matrix, size)
 
 
 def kernel_gaussian(size=3, sigma=1.0):
@@ -56,7 +66,7 @@ def kernel_gaussian(size=3, sigma=1.0):
     gauss = np.exp(-0.5 * np.square(ax) / np.square(sigma))
     kernel_matrix = np.outer(gauss, gauss)
     kernel_matrix /= np.sum(kernel_matrix)
-    return Kernel(f"gaussian_{size}x{size}_sigma{sigma}", kernel_matrix)
+    return Kernel(f"gaussian", kernel_matrix, size, sigma)
 
 
 def apply_kernel(image_array, kernel, border_handling="fill", fill_value=0):
