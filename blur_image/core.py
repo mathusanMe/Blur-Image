@@ -1,8 +1,7 @@
 import os
 from utils import load_image, save_image
 
-from kernels import Kernel, kernel_average, kernel_gaussian
-from image_processing.convolve2d import apply_kernel
+from kernels import Kernel, kernel_average, kernel_gaussian, apply_kernel
 from image_processing.richardson_lucy import RichardsonLucy
 
 
@@ -71,10 +70,10 @@ if __name__ == "__main__":
 
     # Define the kernel to use for blurring and unblurring
     kernels = [
+        kernel_average(size=3),
+        kernel_average(size=5),
         kernel_gaussian(size=5, sigma=1.0),
-        # kernel_gaussian(size=5, sigma=2.0),
-        # kernel_average(size=3),
-        # kernel_average(size=5),
+        kernel_gaussian(size=5, sigma=2.0),
     ]
 
     # Apply a blur to the images in the input folder and save them

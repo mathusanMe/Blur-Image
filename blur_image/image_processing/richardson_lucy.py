@@ -1,5 +1,4 @@
 import numpy as np
-from image_processing.convolve2d import convolve2d
 
 
 class RichardsonLucy:
@@ -58,13 +57,49 @@ class RichardsonLucy:
         psf_mirror = np.flipud(np.fliplr(self.psf))  # Mirrored PSF for the convolution
 
         for _ in range(self.iterations):
-            convolved_estimate = convolve2d(
-                estimate, self.psf, mode="same", boundary="wrap"
-            )
+            convolved_estimate = self._convolve2d(estimate, self.psf)
             relative_blur = channel / (convolved_estimate + 1e-12)
-            error_estimate = convolve2d(
-                relative_blur, psf_mirror, mode="same", boundary="wrap"
-            )
+            error_estimate = self._convolve2d(relative_blur, psf_mirror)
             estimate = estimate * error_estimate
 
         return estimate
+
+    def _convolve2d(self, image, kernel):
+        """
+        Applies a convolution kernel to an image, simulating the behavior of scipy.signal.convolve2d. This includes managing boundary conditions and inverting the kernel as needed for the convolution process.
+
+        :param image: A two-dimensional numpy array that represents the grayscale image to which the convolution will be applied.
+        :type image: numpy.ndarray
+        :param kernel: A two-dimensional numpy array that represents the convolution kernel to be applied to the image.
+        :type kernel: numpy.ndarray
+        :return: A two-dimensional numpy array representing the image after convolution.
+        :rtype: numpy.ndarray
+
+        The function flips the kernel both vertically and horizontally to prepare it for the convolution operation, then computes the convolution by applying the flipped kernel to each pixel of the image, taking into account boundary conditions by wrapping the edges of the image.
+        """
+
+        kernel = np.flipud(
+            np.fliplr(kernel)
+        )  # Flip the kernel horizontally and vertically
+        output = np.zeros_like(
+            image
+        )  # Initialize the output array with the same shape as the input image
+
+        # Calculate the padding sizes for height and width
+        pad_height = kernel.shape[0] // 2
+        pad_width = kernel.shape[1] // 2
+
+        # Pad the input image
+        padded_image = np.pad(
+            image, ((pad_height, pad_height), (pad_width, pad_width)), mode="wrap"
+        )
+
+        # Perform convolution over the input image
+        for x in range(image.shape[1]):  # Iterate over each pixel in width
+            for y in range(image.shape[0]):  # Iterate over each pixel in height
+                # Extract the region of interest from the padded image
+                region = padded_image[y : y + kernel.shape[0], x : x + kernel.shape[1]]
+                # Apply the convolution operation (element-wise multiplication and sum)
+                output[y, x] = np.sum(region * kernel)
+
+        return output
