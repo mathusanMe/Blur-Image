@@ -1,6 +1,6 @@
 import os
 import time
-from utils import load_image, save_image
+from utils import load_image, save_image, print_blue, print_green, print_red, print_yellow
 from image_processing.kernels import kernel_average, kernel_gaussian, apply_kernel
 from image_processing.richardson_lucy import RichardsonLucy
 
@@ -24,7 +24,7 @@ class ImageProcessor:
             os.makedirs(kernel_output_folder)
 
         # Blurring
-        print(f"Blurring image with {kernel_obj}")
+        print_blue(f"Blurring image with {kernel_obj}")
         blurred_image = apply_kernel(image, kernel_obj.kernel, border_handling="wrap")
         blurred_image_path = os.path.join(kernel_output_folder, "blurred.png")
         save_image(blurred_image, blurred_image_path)
@@ -32,20 +32,22 @@ class ImageProcessor:
         # Unblurring with specified iterations
         for iterations in iterations_list:
             start_time = time.time()
-            print(f"Unblurring image with {kernel_obj} and {iterations} iterations")
+            print_red(f"Unblurring image with {kernel_obj} and {iterations} iterations")
             rl = RichardsonLucy(image, kernel_obj.kernel, iterations)
             unblurred_image = rl.apply()
 
             # Calculate PSNR.
             psnr_value = rl.calculate_psnr(image, unblurred_image)
-            print(f"PSNR: {psnr_value:.2f} dB")
+            print_yellow(f"PSNR: {psnr_value:.2f} dB")
 
             duration = time.time() - start_time
             unblurred_image_path = os.path.join(
                 kernel_output_folder, f"unblurred_{iterations}-iter.png"
             )
             save_image(unblurred_image, unblurred_image_path)
-            print(f"Completed unblurring in: {duration:.2f} seconds")
+
+            print_green(f"Completed in: {duration:.2f} seconds")
+            print("------------------------------")
 
     def process_folder(self, kernels, iterations_list):
         for filename in os.listdir(self.input_folder):

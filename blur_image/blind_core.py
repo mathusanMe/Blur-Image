@@ -1,6 +1,6 @@
 import os
 import time
-from utils import load_image, save_image
+from utils import load_image, save_image, print_blue, print_green, print_red, print_yellow
 from image_processing.kernels import (
     Kernel,
     apply_kernel,
@@ -27,7 +27,7 @@ class BlindImageProcessor:
         if not os.path.exists(kernel_output_folder):
             os.makedirs(kernel_output_folder)
 
-        print(
+        print_red(
             f"Unblurring image: {filename}, {iterations} iterations, {psf_iterations} PSF iterations"
         )
         start_time = time.time()
@@ -36,7 +36,7 @@ class BlindImageProcessor:
 
         # Calculate PSNR.
         psnr_value = blrl.calculate_psnr(image, unblurred_image)
-        print(f"PSNR: {psnr_value:.2f} dB")
+        print_yellow(f"PSNR: {psnr_value:.2f} dB")
 
         duration = time.time() - start_time
 
@@ -46,13 +46,14 @@ class BlindImageProcessor:
         save_image(unblurred_image, unblurred_image_path)
 
         # Print the duration in a formatted way
-        print(f"Completed in: {duration:.2f} seconds")
+        print_green(f"Completed in: {duration:.2f} seconds")
+        print("------------------------------")
 
 
     def process_folder(self, initial_psf_list, iterations_list, psf_iterations):
         for filename in os.listdir(self.input_folder):
             if filename.endswith((".png", ".jpg", ".jpeg", ".webp", ".gif")):
-                print(f"############### Processing image: {filename} ###############")
+                print_blue(f"############### Processing image: {filename} ###############")
                 image_path = os.path.join(self.input_folder, filename)
                 
                 for initial_psf in initial_psf_list:
