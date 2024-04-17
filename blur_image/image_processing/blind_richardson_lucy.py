@@ -2,6 +2,7 @@ import numpy as np
 from scipy.signal import fftconvolve
 import math
 
+
 class BlindRichardsonLucy:
     def __init__(self, image, initial_psf, iterations=10, psf_iterations=5):
         self.image = image.astype(np.float64)
@@ -29,7 +30,9 @@ class BlindRichardsonLucy:
         return estimate
 
     def _update_psf(self, original, estimate):
-        flipped_estimate = np.flipud(np.fliplr(estimate))  # Precompute the flipped estimate once per iteration
+        flipped_estimate = np.flipud(
+            np.fliplr(estimate)
+        )  # Precompute the flipped estimate once per iteration
         for _ in range(self.psf_iterations):
             estimated_convolution = self._convolve2d(estimate, self.psf)
             error_ratio = original / (estimated_convolution + 1e-12)
@@ -47,13 +50,11 @@ class BlindRichardsonLucy:
 
         # Manually wrap the boundary by padding
         padded_image = np.pad(
-            image,
-            ((pad_height, pad_height), (pad_width, pad_width)),
-            mode='wrap'
+            image, ((pad_height, pad_height), (pad_width, pad_width)), mode="wrap"
         )
 
         # Perform FFT-based convolution on the padded image
-        result = fftconvolve(padded_image, kernel, mode='same')
+        result = fftconvolve(padded_image, kernel, mode="same")
 
         # Crop the result back to the original image size
         result_cropped = result[pad_height:-pad_height, pad_width:-pad_width]
@@ -65,21 +66,20 @@ class BlindRichardsonLucy:
         cropx, cropy = cropsize
         startx = x // 2 - (cropx // 2)
         starty = y // 2 - (cropy // 2)
-        return img[starty:starty+cropy, startx:startx+cropx]
+        return img[starty : starty + cropy, startx : startx + cropx]
 
     def calculate_psnr(self, original, reconstructed):
         """
         Calculate the PSNR between the original and reconstructed images.
-        
+
         :param original: Original image data as a numpy array.
         :param reconstructed: Reconstructed (deblurred) image data as a numpy array.
         :return: PSNR value in decibels (dB).
         """
         mse = np.mean((original - reconstructed) ** 2)
         if mse == 0:  # MSE is zero means no noise is present in the signal.
-                      # Therefore PSNR is 100.
+            # Therefore PSNR is 100.
             return 100
         max_pixel = 255.0
         psnr = 20 * math.log10(max_pixel / math.sqrt(mse))
         return psnr
-

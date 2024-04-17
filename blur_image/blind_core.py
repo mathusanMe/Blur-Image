@@ -1,6 +1,13 @@
 import os
 import time
-from utils import load_image, save_image, print_blue, print_green, print_red, print_yellow
+from utils import (
+    load_image,
+    save_image,
+    print_blue,
+    print_green,
+    print_red,
+    print_yellow,
+)
 from image_processing.kernels import (
     Kernel,
     apply_kernel,
@@ -41,21 +48,26 @@ class BlindImageProcessor:
         duration = time.time() - start_time
 
         # Update the file name to include kernel, iteration, and PSF iteration information
-        unblurred_image_filename = f"{filename}_unblurred_{iterations}-iter_{psf_iterations}-psf-iter.png"
-        unblurred_image_path = os.path.join(kernel_output_folder, unblurred_image_filename)
+        unblurred_image_filename = (
+            f"{filename}_unblurred_{iterations}-iter_{psf_iterations}-psf-iter.png"
+        )
+        unblurred_image_path = os.path.join(
+            kernel_output_folder, unblurred_image_filename
+        )
         save_image(unblurred_image, unblurred_image_path)
 
         # Print the duration in a formatted way
         print_green(f"Completed in: {duration:.2f} seconds")
         print("------------------------------")
 
-
     def process_folder(self, initial_psf_list, iterations_list, psf_iterations):
         for filename in os.listdir(self.input_folder):
             if filename.endswith((".png", ".jpg", ".jpeg", ".webp", ".gif")):
-                print_blue(f"############### Processing image: {filename} ###############")
+                print_blue(
+                    f"############### Processing image: {filename} ###############"
+                )
                 image_path = os.path.join(self.input_folder, filename)
-                
+
                 for initial_psf in initial_psf_list:
                     for iterations in iterations_list:
                         self.process_image(
@@ -73,14 +85,14 @@ if __name__ == "__main__":
         kernel_average(3),
         kernel_average(5),
         kernel_gaussian(5, 1),
-        kernel_gaussian(5, 2)
+        kernel_gaussian(5, 2),
     ]
 
     iterations_list = [
         15,
         30,
         60,
-        120
+        120,
     ]  # Number of iterations for Blind Richardson-Lucy deconvolution
     psf_iterations = 3  # Number of PSF iterations during each main iteration
 

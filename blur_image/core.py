@@ -1,6 +1,13 @@
 import os
 import time
-from utils import load_image, save_image, print_blue, print_green, print_red, print_yellow
+from utils import (
+    load_image,
+    save_image,
+    print_blue,
+    print_green,
+    print_red,
+    print_yellow,
+)
 from image_processing.kernels import kernel_average, kernel_gaussian, apply_kernel
 from image_processing.richardson_lucy import RichardsonLucy
 

@@ -118,18 +118,18 @@ class RichardsonLucy:
                 output[y, x] = np.sum(region * kernel)
 
         return output
-    
+
     def calculate_psnr(self, original, reconstructed):
         """
         Calculate the PSNR between the original and reconstructed images.
-        
+
         :param original: Original image data as a numpy array.
         :param reconstructed: Reconstructed (deblurred) image data as a numpy array.
         :return: PSNR value in decibels (dB).
         """
         mse = np.mean((original - reconstructed) ** 2)
         if mse == 0:  # MSE is zero means no noise is present in the signal.
-                      # Therefore PSNR is 100.
+            # Therefore PSNR is 100.
             return 100
         max_pixel = 255.0
         psnr = 20 * math.log10(max_pixel / math.sqrt(mse))

@@ -69,17 +69,21 @@ def show_image(image_array):
     image = Image.fromarray(image_array)
     image.show()
 
+
 def print_red(string):
     # Red color
     print("\033[1;31m" + string + "\033[0m")
+
 
 def print_green(string):
     # Bright green color
     print("\033[1;32m" + string + "\033[0m")
 
+
 def print_yellow(string):
     # Yellow color
     print("\033[1;33m" + string + "\033[0m")
+
 
 def print_blue(string):
     # Blue color
