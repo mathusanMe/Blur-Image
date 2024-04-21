@@ -598,7 +598,7 @@ Procedure:
         <td style="text-align: center;">
             <img src="blind_processed/tiger/gaussian_5x5_sigma1.0/tiger_unblurred_30-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <p>30 Iterations, 3 PSF Iterations</p>
+            <p align="center">30 Iterations, 3 PSF Iterations</p>
         </td>
         <td style="text-align: center;">
             <img src="blind_processed/tiger/gaussian_5x5_sigma2.0/tiger_unblurred_30-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
