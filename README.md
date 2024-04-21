@@ -48,20 +48,24 @@ Below are some examples of images processed by the Blur-Image toolkit, showing t
 
 ### Original Image
 
-<div style="display: grid; grid-template-columns: 1fr auto; gap: 40px; justify-content: center; align-items: center;">
-  <div style="display: flex; flex-direction: column; align-items: center;">
-    <img src="originals/flower.jpg" alt="grayscale flower" width="200">
-    <br>
-    <sub>(1) Grayscale Flower</sub>
-  </div>
-  <div style="display: flex; flex-direction: column; align-items: center;">
-    <img src="originals/tiger.jpeg" alt="tiger" width="200">
-    <br>
-    <sub>(2) Tiger</sub>
-  </div>
+<div style="width: 100%; text-align: center;">
+  <table style="display: inline-block; text-align: center; border-collapse: collapse;">
+    <tr>
+      <td style="padding: 20px 0;">
+        <p style="display: flex; flex-direction: column; align-items: center; margin: 0;">
+          <img src="originals/flower.jpg" alt="grayscale flower" width="200" style="margin-bottom: 10px;">
+          <sub>(1) Grayscale Flower</sub>
+        </p>
+      </td>
+      <td style="padding: 20px 0;">
+        <p style="display: flex; flex-direction: column; align-items: center; margin: 0;">
+          <img src="originals/tiger.jpeg" alt="tiger" width="200" style="margin-bottom: 10px;">
+          <sub>(2) Tiger</sub>
+        </p>
+      </td>
+    </tr>
+  </table>
 </div>
-
-
 
 ### Process
 
@@ -81,7 +85,7 @@ Sharpening are done knowing the kernel used for blurring and the number of itera
 Algorithm: Richardson-Lucy Deconvolution
 
 Input:
-    blurry_image: the blurred image to be deconvolved, which can be a single channel from a color image or a 
+    blurry_image: the blurred image to be deconvolved, which can be a single channel from a color image or a
     grayscale image.
     psf: the point spread function assumed to have caused the blur.
     iterations: the number of iterations for the algorithm.
