@@ -48,18 +48,20 @@ Below are some examples of images processed by the Blur-Image toolkit, showing t
 
 ### Original Image
 
-<div style="display: flex; justify-content: center; align-items: center;">
-  <p style="margin-right: 20px; display: flex; flex-direction: column; align-items: center;">
+<div style="display: grid; grid-template-columns: 1fr auto; gap: 40px; justify-content: center; align-items: center;">
+  <div style="display: flex; flex-direction: column; align-items: center;">
     <img src="originals/flower.jpg" alt="grayscale flower" width="200">
     <br>
-    <sub style="margin-top: auto;">(1) Grayscale Flower</sub>
-  </p>
-  <p style="margin-left: 20px; display: flex; flex-direction: column; align-items: center;">
+    <sub>(1) Grayscale Flower</sub>
+  </div>
+  <div style="display: flex; flex-direction: column; align-items: center;">
     <img src="originals/tiger.jpeg" alt="tiger" width="200">
     <br>
-    <sub style="margin-top: auto;">(2) Tiger</sub>
-  </p>
+    <sub>(2) Tiger</sub>
+  </div>
 </div>
+
+
 
 ### Process
 
