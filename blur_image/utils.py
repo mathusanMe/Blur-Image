@@ -1,5 +1,6 @@
 import numpy as np
 from PIL import Image
+import math
 
 
 def load_image(image_path, grayscale=False):
@@ -68,6 +69,23 @@ def show_image(image_array):
     """
     image = Image.fromarray(image_array)
     image.show()
+
+
+def calculate_psnr(original, reconstructed):
+    """
+    Calculate the PSNR (Peak Signal to Noise Ratio) between the original and reconstructed images.
+
+    :param original: Original image data as a numpy array.
+    :param reconstructed: Reconstructed (deblurred) image data as a numpy array.
+    :return: PSNR value in decibels (dB).
+    """
+    mse = np.mean((original - reconstructed) ** 2)
+    if mse == 0:  # MSE is zero means no noise is present in the signal.
+        # Therefore PSNR is 100.
+        return 100
+    max_pixel = 255.0
+    psnr = 20 * math.log10(max_pixel / math.sqrt(mse))
+    return psnr
 
 
 def print_red(string):

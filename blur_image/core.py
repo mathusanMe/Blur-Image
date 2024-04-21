@@ -3,6 +3,7 @@ import time
 from utils import (
     load_image,
     save_image,
+    calculate_psnr,
     print_blue,
     print_green,
     print_red,
@@ -44,7 +45,7 @@ class ImageProcessor:
             unblurred_image = rl.apply()
 
             # Calculate PSNR.
-            psnr_value = rl.calculate_psnr(image, unblurred_image)
+            psnr_value = calculate_psnr(image, unblurred_image)
             print_yellow(f"PSNR: {psnr_value:.2f} dB")
 
             duration = time.time() - start_time

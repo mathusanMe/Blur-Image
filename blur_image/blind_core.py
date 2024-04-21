@@ -3,6 +3,7 @@ import time
 from utils import (
     load_image,
     save_image,
+    calculate_psnr,
     print_blue,
     print_green,
     print_red,
@@ -42,7 +43,7 @@ class BlindImageProcessor:
         unblurred_image = blrl.apply()
 
         # Calculate PSNR.
-        psnr_value = blrl.calculate_psnr(image, unblurred_image)
+        psnr_value = calculate_psnr(image, unblurred_image)
         print_yellow(f"PSNR: {psnr_value:.2f} dB")
 
         duration = time.time() - start_time

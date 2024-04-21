@@ -1,5 +1,4 @@
 import numpy as np
-import math
 
 
 class RichardsonLucy:
@@ -18,6 +17,7 @@ class RichardsonLucy:
         self.image = image
         self.psf = psf
         self.iterations = iterations
+        self.psf_mirror = np.flipud(np.fliplr(self.psf))  # Precompute the mirrored PSF
 
     def apply(self):
         """
@@ -54,16 +54,18 @@ class RichardsonLucy:
         :return: The deblurred channel.
         :rtype: numpy.ndarray
         """
+
+        # Calculate the mean and standard deviation of the original channel for
+        # lighting and contrast correction
         original_mean = np.mean(channel)
         original_std = np.std(channel)
 
         estimate = np.copy(channel)
-        psf_mirror = np.flipud(np.fliplr(self.psf))
 
         for _ in range(self.iterations):
             convolved_estimate = self._convolve2d(estimate, self.psf)
             relative_blur = channel / (convolved_estimate + 1e-12)
-            error_estimate = self._convolve2d(relative_blur, psf_mirror)
+            error_estimate = self._convolve2d(relative_blur, self.psf_mirror)
             estimate = estimate * error_estimate
 
             # Incremental lighting and contrast correction
@@ -81,7 +83,8 @@ class RichardsonLucy:
 
     def _convolve2d(self, image, kernel):
         """
-        Applies a convolution kernel to an image, simulating the behavior of scipy.signal.convolve2d. This includes managing boundary conditions and inverting the kernel as needed for the convolution process.
+        Applies a convolution kernel to an image, simulating the behavior of scipy.signal.convolve2d. This includes
+        managing boundary conditions and inverting the kernel as needed for the convolution process.
 
         :param image: A two-dimensional numpy array that represents the grayscale image to which the convolution will be applied.
         :type image: numpy.ndarray
@@ -90,7 +93,9 @@ class RichardsonLucy:
         :return: A two-dimensional numpy array representing the image after convolution.
         :rtype: numpy.ndarray
 
-        The function flips the kernel both vertically and horizontally to prepare it for the convolution operation, then computes the convolution by applying the flipped kernel to each pixel of the image, taking into account boundary conditions by wrapping the edges of the image.
+        The function flips the kernel both vertically and horizontally to prepare it for the convolution operation, then computes
+        the convolution by applying the flipped kernel to each pixel of the image, taking into account boundary conditions by
+        wrapping the edges of the image.
         """
 
         kernel = np.flipud(
@@ -118,19 +123,3 @@ class RichardsonLucy:
                 output[y, x] = np.sum(region * kernel)
 
         return output
-
-    def calculate_psnr(self, original, reconstructed):
-        """
-        Calculate the PSNR between the original and reconstructed images.
-
-        :param original: Original image data as a numpy array.
-        :param reconstructed: Reconstructed (deblurred) image data as a numpy array.
-        :return: PSNR value in decibels (dB).
-        """
-        mse = np.mean((original - reconstructed) ** 2)
-        if mse == 0:  # MSE is zero means no noise is present in the signal.
-            # Therefore PSNR is 100.
-            return 100
-        max_pixel = 255.0
-        psnr = 20 * math.log10(max_pixel / math.sqrt(mse))
-        return psnr
