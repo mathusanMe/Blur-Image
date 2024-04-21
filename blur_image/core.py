@@ -41,7 +41,9 @@ class ImageProcessor:
         # Unblurring with specified iterations
         for iterations in iterations_list:
             start_time = time.time()
-            print_purple(f"Unblurring image with {kernel_obj} and {iterations} iterations")
+            print_purple(
+                f"Unblurring image with {kernel_obj} and {iterations} iterations"
+            )
             rl = RichardsonLucy(image, kernel_obj.kernel, iterations)
             unblurred_image = rl.apply()
 
@@ -61,7 +63,9 @@ class ImageProcessor:
     def process_folder(self, kernels, iterations_list):
         for filename in os.listdir(self.input_folder):
             if filename.endswith((".png", ".jpg", ".jpeg", ".webp", ".gif")):
-                print_blue(f"############### Processing image: {filename} ###############")
+                print_blue(
+                    f"############### Processing image: {filename} ###############"
+                )
                 image_path = os.path.join(self.input_folder, filename)
                 image_output_folder = os.path.join(
                     self.output_folder, os.path.splitext(filename)[0]
