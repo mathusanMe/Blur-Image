@@ -106,3 +106,7 @@ def print_yellow(string):
 def print_blue(string):
     # Blue color
     print("\033[1;34m" + string + "\033[0m")
+
+def print_purple(string):
+    # Purple color
+    print("\033[1;35m" + string + "\033[0m")

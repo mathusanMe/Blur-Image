@@ -8,6 +8,7 @@ from utils import (
     print_green,
     print_red,
     print_yellow,
+    print_purple,
 )
 from image_processing.kernels import (
     Kernel,
@@ -35,7 +36,7 @@ class BlindImageProcessor:
         if not os.path.exists(kernel_output_folder):
             os.makedirs(kernel_output_folder)
 
-        print_red(
+        print_purple(
             f"Unblurring image: {filename}, {iterations} iterations, {psf_iterations} PSF iterations"
         )
         start_time = time.time()
@@ -59,7 +60,7 @@ class BlindImageProcessor:
 
         # Print the duration in a formatted way
         print_green(f"Completed in: {duration:.2f} seconds")
-        print("------------------------------")
+        print("--------------------------------------------------")
 
     def process_folder(self, initial_psf_list, iterations_list, psf_iterations):
         for filename in os.listdir(self.input_folder):

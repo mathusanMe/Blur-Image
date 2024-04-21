@@ -8,6 +8,7 @@ from utils import (
     print_green,
     print_red,
     print_yellow,
+    print_purple,
 )
 from image_processing.kernels import kernel_average, kernel_gaussian, apply_kernel
 from image_processing.richardson_lucy import RichardsonLucy
@@ -32,7 +33,7 @@ class ImageProcessor:
             os.makedirs(kernel_output_folder)
 
         # Blurring
-        print_blue(f"Blurring image with {kernel_obj}")
+        print_red(f"Blurring image with {kernel_obj}")
         blurred_image = apply_kernel(image, kernel_obj.kernel, border_handling="wrap")
         blurred_image_path = os.path.join(kernel_output_folder, "blurred.png")
         save_image(blurred_image, blurred_image_path)
@@ -40,7 +41,7 @@ class ImageProcessor:
         # Unblurring with specified iterations
         for iterations in iterations_list:
             start_time = time.time()
-            print_red(f"Unblurring image with {kernel_obj} and {iterations} iterations")
+            print_purple(f"Unblurring image with {kernel_obj} and {iterations} iterations")
             rl = RichardsonLucy(image, kernel_obj.kernel, iterations)
             unblurred_image = rl.apply()
 
@@ -55,12 +56,12 @@ class ImageProcessor:
             save_image(unblurred_image, unblurred_image_path)
 
             print_green(f"Completed in: {duration:.2f} seconds")
-            print("------------------------------")
+            print("--------------------------------------------------")
 
     def process_folder(self, kernels, iterations_list):
         for filename in os.listdir(self.input_folder):
             if filename.endswith((".png", ".jpg", ".jpeg", ".webp", ".gif")):
-                print(f"############### Processing image: {filename} ###############")
+                print_blue(f"############### Processing image: {filename} ###############")
                 image_path = os.path.join(self.input_folder, filename)
                 image_output_folder = os.path.join(
                     self.output_folder, os.path.splitext(filename)[0]
