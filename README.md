@@ -500,7 +500,8 @@ Procedure:
        convolved_estimate = convolve2d(estimate, psf)
 
     b. Compute the ratio of the blurry_image to the convolved_estimate
-       ratio = blurry_image / (convolved_estimate + small_value) // small_value prevents division by zero.
+       ratio = blurry_image / (convolved_estimate + small_value) // small_value prevents 
+       division by zero.
 
     c. Convolve the ratio with the mirrored PSF
        error_estimate = convolve2d(ratio, flip(psf, vertically and horizontally))
@@ -517,7 +518,8 @@ Procedure:
               error_ratio = blurry_image / (estimated_convolution + small_value)
 
            C. Convolve the error_ratio with the flipped estimate
-              full_psf_update = convolve2d(error_ratio, flip(estimate, vertically and horizontally))
+              full_psf_update = convolve2d(error_ratio, flip(estimate, 
+              vertically and horizontally))
 
            D. Crop the full_psf_update to match the PSF size and update the PSF
               psf_update = crop_center(full_psf_update, size of psf)
