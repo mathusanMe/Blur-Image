@@ -42,26 +42,11 @@ After tuning the parameters in the `core.py` and `blind_core.py` files, you can 
 python ./run.sh
 ```
 
-## Examples and Results
+## Richardson-Lucy Deconvolution
 
 Below are some examples of images processed by the Blur-Image toolkit, showing the original images, the blurred versions, and the deblurred outputs after applying various kernels and iteration counts.
 
-### Original Image
-
-<div style="display: flex; justify-content: center; align-items: center;">
-  <p style="margin-right: 20px; display: flex; flex-direction: column; align-items: center;">
-    <img src="originals/flower.jpg" alt="grayscale flower" width="200">
-    <br>
-    <sub style="margin-top: auto;">(1) Grayscale Flower</sub>
-  </p>
-  <p style="margin-left: 20px; display: flex; flex-direction: column; align-items: center;">
-    <img src="originals/tiger.jpeg" alt="tiger" width="200">
-    <br>
-    <sub style="margin-top: auto;">(2) Tiger</sub>
-  </p>
-</div>
-
-### Process
+#### Process
 
 Blurring are done using the following kernels:
 
@@ -79,7 +64,7 @@ Sharpening are done knowing the kernel used for blurring and the number of itera
 Algorithm: Richardson-Lucy Deconvolution
 
 Input:
-    blurry_image: the blurred image to be deconvolved, which can be a single channel from a color image or a 
+    blurry_image: the blurred image to be deconvolved, which can be a single channel from a color image or a
     grayscale image.
     psf: the point spread function assumed to have caused the blur.
     iterations: the number of iterations for the algorithm.
@@ -108,9 +93,24 @@ Procedure:
 
 ```
 
-### Processed Images
+#### Original Image
 
-#### (1) Grayscale Flower
+<div style="display: flex; justify-content: center; align-items: center;">
+  <p style="margin-right: 20px; display: flex; flex-direction: column; align-items: center;">
+    <img src="originals/flower.jpg" alt="grayscale flower" width="200">
+    <br>
+    <sub style="margin-top: auto;">(1) Grayscale Flower</sub>
+  </p>
+  <p style="margin-left: 20px; display: flex; flex-direction: column; align-items: center;">
+    <img src="originals/tiger.jpeg" alt="tiger" width="200">
+    <br>
+    <sub style="margin-top: auto;">(2) Tiger</sub>
+  </p>
+</div>
+
+#### Processed Images
+
+##### (1) Grayscale Flower
 
 <table style="width: 100%; border-collapse: collapse;">
     <tr>
@@ -291,7 +291,7 @@ Procedure:
     </tr>
 </table>
 
-#### (2) Tiger
+##### (2) Tiger
 
 <table style="width: 100%; border-collapse: collapse;">
     <tr>
@@ -468,6 +468,192 @@ Procedure:
             <img src="processed/tiger/gaussian_5x5_sigma2.0/unblurred_15-iter.png" alt="unblurred tiger" width="200">
             <br>
             <sub>15 Iterations</sub>
+        </td>
+    </tr>
+</table>
+
+## Blind Richardson-Lucy Deconvolution
+
+### Process
+
+Sharpening are done not knowing the kernel used for blurring and the number of iterations using the Blind Richardson-Lucy deconvolution algorithm as follows:
+
+```plaintext
+Algorithm: Blind Richardson-Lucy Deconvolution
+
+Input:
+    blurry_image: the blurred image to be deconvolved.
+    initial_psf: initial guess for the point spread function (PSF).
+    iterations: number of iterations for the deconvolution process.
+    psf_iterations: number of iterations for refining the PSF.
+
+Output:
+    deblurred_image: the image after deconvolution.
+
+Procedure:
+1. Initialize:
+    estimate = copy of blurry_image // Starting estimate for the deblurred image.
+    psf = initial_psf // Starting estimate for the PSF.
+
+2. For each deconvolution iteration:
+    a. Convolve the estimate with the current psf
+       convolved_estimate = convolve2d(estimate, psf)
+
+    b. Compute the ratio of the blurry_image to the convolved_estimate
+       ratio = blurry_image / (convolved_estimate + small_value) // small_value prevents division by zero.
+
+    c. Convolve the ratio with the mirrored PSF
+       error_estimate = convolve2d(ratio, flip(psf, vertically and horizontally))
+
+    d. Update the estimate by multiplying it with the error_estimate
+       estimate = estimate * error_estimate
+
+    e. Update the PSF for a number of sub-iterations:
+       i. For each PSF iteration:
+           A. Convolve the estimate with the current psf
+              estimated_convolution = convolve2d(estimate, psf)
+
+           B. Compute the ratio of the original blurry_image to the estimated_convolution
+              error_ratio = blurry_image / (estimated_convolution + small_value)
+
+           C. Convolve the error_ratio with the flipped estimate
+              full_psf_update = convolve2d(error_ratio, flip(estimate, vertically and horizontally))
+
+           D. Crop the full_psf_update to match the PSF size and update the PSF
+              psf_update = crop_center(full_psf_update, size of psf)
+              psf = psf * psf_update
+              psf = normalize(psf) // Ensures energy of the PSF is preserved.
+
+3. Return the final estimate after all iterations as the deblurred_image.
+```
+
+### Original Image
+
+<div style="display: flex; justify-content: center; align-items: center;">
+  <p style="margin-right: 20px; display: flex; flex-direction: column; align-items: center;">
+    <img src="blind_originals/tiger.png" alt="blurred tiger" width="200">
+    <br>
+    <sub style="margin-top: auto;">(A) Blurred tiger (Unknown Kernel)</sub>
+  </p>
+</div>
+
+### Processed Images
+
+#### (A) Blurred Tiger (Unknown Kernel)
+
+<table style="width: 100%; border-collapse: collapse;">
+    <tr>
+        <td style="text-align: center;">
+            <p style="font-weight: bold;">Average 3x3</p>
+        </td>
+        <td style="text-align: center;">
+            <p style="font-weight: bold;">Average 5x5</p>
+        </td>
+        <td style="text-align: center;">
+            <p style="font-weight: bold;">Gaussian 5x5, sigma: 1.0</p>
+        </td>
+        <td style="text-align: center;">
+            <p style="font-weight: bold;">Gaussian 5x5, sigma: 2.0</p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="7" style="text-align: center;"></td>
+    </tr>
+    <tr>
+        <td style="text-align: center;">
+            <img src="blind_processed/tiger/average_5x5/tiger_unblurred_15-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
+            <br>
+            <p>15 Iterations, 3 PSF Iterations</p>
+        </td>
+        <td style="text-align: center;">
+            <img src="blind_processed/tiger/average_5x5/tiger_unblurred_15-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
+            <br>
+            <p>15 Iterations, 3 PSF Iterations</p>
+        </td>
+        <td style="text-align: center;">
+            <img src="blind_processed/tiger/gaussian_5x5_sigma1.0/tiger_unblurred_15-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
+            <br>
+            <p>15 Iterations, 3 PSF Iterations</p>
+        </td>
+        <td style="text-align: center;">
+            <img src="blind_processed/tiger/gaussian_5x5_sigma2.0/tiger_unblurred_15-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
+            <br>
+            <p>15 Iterations, 3 PSF Iterations</p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="7" style="text-align: center;"></td>
+    </tr>
+    <tr>
+        <td style="text-align: center;">
+            <img src="blind_processed/tiger/average_5x5/tiger_unblurred_30-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
+            <br>
+            <p>30 Iterations, 3 PSF Iterations</p>
+        </td>
+        <td style="text-align: center;">
+            <img src="blind_processed/tiger/average_5x5/tiger_unblurred_30-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
+            <br>
+            <p>30 Iterations, 3 PSF Iterations</p>
+        </td>
+        <td style="text-align: center;">
+            <img src="blind_processed/tiger/gaussian_5x5_sigma1.0/tiger_unblurred_30-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
+            <br>
+            <p>30 Iterations, 3 PSF Iterations</p>
+        </td>
+        <td style="text-align: center;">
+            <img src="blind_processed/tiger/gaussian_5x5_sigma2.0/tiger_unblurred_30-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
+            <br>
+            <p>30 Iterations, 3 PSF Iterations</p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="7" style="text-align: center;"></td>
+    </tr>
+    <tr>
+        <td style="text-align: center;">
+            <img src="blind_processed/tiger/average_5x5/tiger_unblurred_60-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
+            <br>
+            <p>60 Iterations, 3 PSF Iterations</p>
+        </td>
+        <td style="text-align: center;">
+            <img src="blind_processed/tiger/average_5x5/tiger_unblurred_60-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
+            <br>
+            <p>60 Iterations, 3 PSF Iterations</p>
+        </td>
+        <td style="text-align: center;">
+            <img src="blind_processed/tiger/gaussian_5x5_sigma1.0/tiger_unblurred_60-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
+            <br>
+            <p>60 Iterations, 3 PSF Iterations</p>
+        </td>
+        <td style="text-align: center;">
+            <img src="blind_processed/tiger/gaussian_5x5_sigma2.0/tiger_unblurred_60-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
+            <br>
+            <p>60 Iterations, 3 PSF Iterations</p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="7" style="text-align: center;"></td>
+    </tr>
+    <tr>
+        <td style="text-align: center;">
+            <img src="blind_processed/tiger/average_5x5/tiger_unblurred_120-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
+            <br>
+            <p>120 Iterations, 3 PSF Iterations</p>
+        </td>
+        <td style="text-align: center;">
+            <img src="blind_processed/tiger/average_5x5/tiger_unblurred_120-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
+            <br>
+            <p>120 Iterations, 3 PSF Iterations</p>
+        </td>
+        <td style="text-align: center;">
+            <img src="blind_processed/tiger/gaussian_5x5_sigma1.0/tiger_unblurred_120-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
+            <br>
+            <p>120 Iterations, 3 PSF Iterations</p>
+        </td>
+        <td style="text-align: center;">
+            <img src="blind_processed/tiger/gaussian_5x5_sigma2.0/tiger_unblurred_120-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
+            <br>
+            <p>120 Iterations, 3 PSF Iterations</p>
         </td>
     </tr>
 </table>

@@ -86,8 +86,8 @@ if __name__ == "__main__":
     initial_psf_list = [
         kernel_average(3),
         kernel_average(5),
-        kernel_gaussian(5, 1),
-        kernel_gaussian(5, 2),
+        kernel_gaussian(5, 1.0),
+        kernel_gaussian(5, 2.0),
     ]
 
     iterations_list = [
