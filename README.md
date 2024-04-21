@@ -95,7 +95,7 @@ Procedure:
 
 #### Original Image
 
-<div style="display: flex; justify-content: center; align-items: center;">
+<div align="center" style="display: flex; justify-content: center; align-items: center;">
   <p style="margin-right: 20px; display: flex; flex-direction: column; align-items: center;">
     <img src="originals/flower.jpg" alt="grayscale flower" width="200">
     <br>
@@ -529,7 +529,7 @@ Procedure:
 
 ### Original Image
 
-<div style="display: flex; justify-content: center; align-items: center;">
+<div align="center" style="display: flex; justify-content: center; align-items: center;">
   <p style="margin-right: 20px; display: flex; flex-direction: column; align-items: center;">
     <img src="blind_originals/tiger.png" alt="blurred tiger" width="200">
     <br>
