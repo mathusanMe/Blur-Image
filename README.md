@@ -54,13 +54,13 @@ Below are some examples of images processed by the Blur-Image toolkit, showing t
       <td style="padding: 20px 0;">
         <p style="display: flex; flex-direction: column; align-items: center; margin: 0;">
           <img src="originals/flower.jpg" alt="grayscale flower" width="200" style="margin-bottom: 10px;">
-          <sub>(1) Grayscale Flower</sub>
+          <p>(1) Grayscale Flower</p>
         </p>
       </td>
       <td style="padding: 20px 0;">
         <p style="display: flex; flex-direction: column; align-items: center; margin: 0;">
           <img src="originals/tiger.jpeg" alt="tiger" width="200" style="margin-bottom: 10px;">
-          <sub>(2) Tiger</sub>
+          <p>(2) Tiger</p>
         </p>
       </td>
     </tr>
