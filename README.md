@@ -115,29 +115,29 @@ Procedure:
 <table style="width: 100%; border-collapse: collapse;">
     <tr>
         <td style="text-align: center;">
-            <p style="font-weight: bold;">Average 3x3</p>
+            <p align="center" style="font-weight: bold;">Average 3x3</p>
         </td>
         <td style="text-align: center;">
-            <p style="font-weight: bold;">Average 5x5</p>
+            <p align="center" style="font-weight: bold;">Average 5x5</p>
         </td>
         <td style="text-align: center;">
-            <p style="font-weight: bold;">Average 11x11</p>
+            <p align="center" style="font-weight: bold;">Average 11x11</p>
         </td>
         <td style="text-align: center;">
-            <p style="font-weight: bold;">Gaussian 3x3, sigma: 1.0</p>
+            <p align="center" style="font-weight: bold;">Gaussian 3x3, sigma: 1.0</p>
         </td>
         <td style="text-align: center;">
-            <p style="font-weight: bold;">Gaussian 3x3, sigma: 2.0</p>
+            <p align="center" style="font-weight: bold;">Gaussian 3x3, sigma: 2.0</p>
         </td>
         <td style="text-align: center;">
-            <p style="font-weight: bold;">Gaussian 5x5, sigma: 1.0</p>
+            <p align="center" style="font-weight: bold;">Gaussian 5x5, sigma: 1.0</p>
         </td>
         <td style="text-align: center;">
-            <p style="font-weight: bold;">Gaussian 5x5, sigma: 2.0</p>
+            <p align="center" style="font-weight: bold;">Gaussian 5x5, sigma: 2.0</p>
         </td>
     </tr>
     <tr>
-        <td colspan="7" style="text-align: center;"><strong>Blurred Images</strong></td>
+        <td colspan="7" align="center" style="text-align: center;"><strong>Blurred Images</strong></td>
     </tr>
     <tr>
         <td style="text-align: center;">
@@ -170,43 +170,43 @@ Procedure:
         </td>
     </tr>
     <tr>
-        <td colspan="7" style="text-align: center;"><strong>Unblurred Images</strong></td>
+        <td colspan="7" align="center" style="text-align: center;"><strong>Unblurred Images</strong></td>
     </tr>
     <tr>
         <td style="text-align: center;">
             <img src="processed/flower/average_3x3/unblurred_5-iter.png" alt="unblurred flower" width="200">
             <br>
-            <sub>5 Iterations</sub>
+            <sub align="center">5 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/flower/average_5x5/unblurred_5-iter.png" alt="unblurred flower" width="200">
             <br>
-            <sub>5 Iterations</sub>
+            <sub align="center">5 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/flower/average_11x11/unblurred_5-iter.png" alt="unblurred flower" width="200">
             <br>
-            <sub>5 Iterations</sub>
+            <sub align="center">5 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/flower/gaussian_3x3_sigma1.0/unblurred_5-iter.png" alt="unblurred flower" width="200">
             <br>
-            <sub>5 Iterations</sub>
+            <sub align="center">5 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/flower/gaussian_3x3_sigma2.0/unblurred_5-iter.png" alt="unblurred flower" width="200">
             <br>
-            <sub>5 Iterations</sub>
+            <sub align="center">5 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/flower/gaussian_5x5_sigma1.0/unblurred_5-iter.png" alt="unblurred flower" width="200">
             <br>
-            <sub>5 Iterations</sub>
+            <sub align="center">5 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/flower/gaussian_5x5_sigma2.0/unblurred_5-iter.png" alt="unblurred flower" width="200">
             <br>
-            <sub>5 Iterations</sub>
+            <sub align="center">5 Iterations</sub>
         </td>
     </tr>
     <tr>
@@ -216,37 +216,37 @@ Procedure:
         <td style="text-align: center;">
             <img src="processed/flower/average_3x3/unblurred_10-iter.png" alt="unblurred flower" width="200">
             <br>
-            <sub>10 Iterations</sub>
+            <sub align="center">10 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/flower/average_5x5/unblurred_10-iter.png" alt="unblurred flower" width="200">
             <br>
-            <sub>10 Iterations</sub>
+            <sub align="center">10 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/flower/average_11x11/unblurred_10-iter.png" alt="unblurred flower" width="200">
             <br>
-            <sub>10 Iterations</sub>
+            <sub align="center">10 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/flower/gaussian_3x3_sigma1.0/unblurred_10-iter.png" alt="unblurred flower" width="200">
             <br>
-            <sub>10 Iterations</sub>
+            <sub align="center">10 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/flower/gaussian_3x3_sigma2.0/unblurred_10-iter.png" alt="unblurred flower" width="200">
             <br>
-            <sub>10 Iterations</sub>
+            <sub align="center">10 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/flower/gaussian_5x5_sigma1.0/unblurred_10-iter.png" alt="unblurred flower" width="200">
             <br>
-            <sub>10 Iterations</sub>
+            <sub align="center">10 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/flower/gaussian_5x5_sigma2.0/unblurred_10-iter.png" alt="unblurred flower" width="200">
             <br>
-            <sub>10 Iterations</sub>
+            <sub align="center">10 Iterations</sub>
         </td>
     </tr>
     <tr>
@@ -256,37 +256,37 @@ Procedure:
         <td style="text-align: center;">
             <img src="processed/flower/average_3x3/unblurred_15-iter.png" alt="unblurred flower" width="200">
             <br>
-            <sub>15 Iterations</sub>
+            <sub align="center">15 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/flower/average_5x5/unblurred_15-iter.png" alt="unblurred flower" width="200">
             <br>
-            <sub>15 Iterations</sub>
+            <sub align="center">15 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/flower/average_11x11/unblurred_15-iter.png" alt="unblurred flower" width="200">
             <br>
-            <sub>15 Iterations</sub>
+            <sub align="center">15 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/flower/gaussian_3x3_sigma1.0/unblurred_15-iter.png" alt="unblurred flower" width="200">
             <br>
-            <sub>15 Iterations</sub>
+            <sub align="center">15 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/flower/gaussian_3x3_sigma2.0/unblurred_15-iter.png" alt="unblurred flower" width="200">
             <br>
-            <sub>15 Iterations</sub>
+            <sub align="center">15 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/flower/gaussian_5x5_sigma1.0/unblurred_15-iter.png" alt="unblurred flower" width="200">
             <br>
-            <sub>15 Iterations</sub>
+            <sub align="center">15 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/flower/gaussian_5x5_sigma2.0/unblurred_15-iter.png" alt="unblurred flower" width="200">
             <br>
-            <sub>15 Iterations</sub>
+            <sub align="center">15 Iterations</sub>
         </td>
     </tr>
 </table>
@@ -296,29 +296,29 @@ Procedure:
 <table style="width: 100%; border-collapse: collapse;">
     <tr>
         <td style="text-align: center;">
-            <p style="font-weight: bold;">Average 3x3</p>
+            <p align="center" style="font-weight: bold;">Average 3x3</p>
         </td>
         <td style="text-align: center;">
-            <p style="font-weight: bold;">Average 5x5</p>
+            <p align="center" style="font-weight: bold;">Average 5x5</p>
         </td>
         <td style="text-align: center;">
-            <p style="font-weight: bold;">Average 11x11</p>
+            <p align="center" style="font-weight: bold;">Average 11x11</p>
         </td>
         <td style="text-align: center;">
-            <p style="font-weight: bold;">Gaussian 3x3, sigma: 1.0</p>
+            <p align="center" style="font-weight: bold;">Gaussian 3x3, sigma: 1.0</p>
         </td>
         <td style="text-align: center;">
-            <p style="font-weight: bold;">Gaussian 3x3, sigma: 2.0</p>
+            <p align="center" style="font-weight: bold;">Gaussian 3x3, sigma: 2.0</p>
         </td>
         <td style="text-align: center;">
-            <p style="font-weight: bold;">Gaussian 5x5, sigma: 1.0</p>
+            <p align="center" style="font-weight: bold;">Gaussian 5x5, sigma: 1.0</p>
         </td>
         <td style="text-align: center;">
-            <p style="font-weight: bold;">Gaussian 5x5, sigma: 2.0</p>
+            <p align="center" style="font-weight: bold;">Gaussian 5x5, sigma: 2.0</p>
         </td>
     </tr>
     <tr>
-        <td colspan="7" style="text-align: center;"><strong>Blurred Images</strong></td>
+        <td colspan="7" align="center" style="text-align: center;"><strong>Blurred Images</strong></td>
     </tr>
     <tr>
         <td style="text-align: center;">
@@ -351,43 +351,43 @@ Procedure:
         </td>
     </tr>
     <tr>
-        <td colspan="7" style="text-align: center;"><strong>Unblurred Images</strong></td>
+        <td colspan="7" align="center" style="text-align: center;"><strong>Unblurred Images</strong></td>
     </tr>
     <tr>
         <td style="text-align: center;">
             <img src="processed/tiger/average_3x3/unblurred_5-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <sub>5 Iterations</sub>
+            <sub align="center">5 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/tiger/average_5x5/unblurred_5-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <sub>5 Iterations</sub>
+            <sub align="center">5 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/tiger/average_11x11/unblurred_5-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <sub>5 Iterations</sub>
+            <sub align="center">5 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/tiger/gaussian_3x3_sigma1.0/unblurred_5-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <sub>5 Iterations</sub>
+            <sub align="center">5 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/tiger/gaussian_3x3_sigma2.0/unblurred_5-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <sub>5 Iterations</sub>
+            <sub align="center">5 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/tiger/gaussian_5x5_sigma1.0/unblurred_5-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <sub>5 Iterations</sub>
+            <sub align="center">5 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/tiger/gaussian_5x5_sigma2.0/unblurred_5-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <sub>5 Iterations</sub>
+            <sub align="center">5 Iterations</sub>
         </td>
     </tr>
     <tr>
@@ -397,37 +397,37 @@ Procedure:
         <td style="text-align: center;">
             <img src="processed/tiger/average_3x3/unblurred_10-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <sub>10 Iterations</sub>
+            <sub align="center">10 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/tiger/average_5x5/unblurred_10-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <sub>10 Iterations</sub>
+            <sub align="center">10 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/tiger/average_11x11/unblurred_10-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <sub>10 Iterations</sub>
+            <sub align="center">10 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/tiger/gaussian_3x3_sigma1.0/unblurred_10-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <sub>10 Iterations</sub>
+            <sub align="center">10 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/tiger/gaussian_3x3_sigma2.0/unblurred_10-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <sub>10 Iterations</sub>
+            <sub align="center">10 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/tiger/gaussian_5x5_sigma1.0/unblurred_10-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <sub>10 Iterations</sub>
+            <sub align="center">10 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/tiger/gaussian_5x5_sigma2.0/unblurred_10-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <sub>10 Iterations</sub>
+            <sub align="center">10 Iterations</sub>
         </td>
     </tr>
     <tr>
@@ -437,37 +437,37 @@ Procedure:
         <td style="text-align: center;">
             <img src="processed/tiger/average_3x3/unblurred_15-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <sub>15 Iterations</sub>
+            <sub align="center">15 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/tiger/average_5x5/unblurred_15-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <sub>15 Iterations</sub>
+            <sub align="center">15 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/tiger/average_11x11/unblurred_15-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <sub>15 Iterations</sub>
+            <sub align="center">15 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/tiger/gaussian_3x3_sigma1.0/unblurred_15-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <sub>15 Iterations</sub>
+            <sub align="center">15 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/tiger/gaussian_3x3_sigma2.0/unblurred_15-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <sub>15 Iterations</sub>
+            <sub align="center">15 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/tiger/gaussian_5x5_sigma1.0/unblurred_15-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <sub>15 Iterations</sub>
+            <sub align="center">15 Iterations</sub>
         </td>
         <td style="text-align: center;">
             <img src="processed/tiger/gaussian_5x5_sigma2.0/unblurred_15-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <sub>15 Iterations</sub>
+            <sub align="center">15 Iterations</sub>
         </td>
     </tr>
 </table>
@@ -533,7 +533,7 @@ Procedure:
   <p style="margin-right: 20px; display: flex; flex-direction: column; align-items: center;">
     <img src="blind_originals/tiger.png" alt="blurred tiger" width="200">
     <br>
-    <sub style="margin-top: auto;">(A) Blurred tiger (Unknown Kernel)</sub>
+    <sub align="center" style="margin-top: auto;">(A) Blurred tiger (Unknown Kernel)</sub>
   </p>
 </div>
 
@@ -544,16 +544,16 @@ Procedure:
 <table style="width: 100%; border-collapse: collapse;">
     <tr>
         <td style="text-align: center;">
-            <p style="font-weight: bold;">Average 3x3</p>
+            <p align="center" style="font-weight: bold;">Average 3x3</p>
         </td>
         <td style="text-align: center;">
-            <p style="font-weight: bold;">Average 5x5</p>
+            <p align="center" style="font-weight: bold;">Average 5x5</p>
         </td>
         <td style="text-align: center;">
-            <p style="font-weight: bold;">Gaussian 5x5, sigma: 1.0</p>
+            <p align="center" style="font-weight: bold;">Gaussian 5x5, sigma: 1.0</p>
         </td>
         <td style="text-align: center;">
-            <p style="font-weight: bold;">Gaussian 5x5, sigma: 2.0</p>
+            <p align="center" style="font-weight: bold;">Gaussian 5x5, sigma: 2.0</p>
         </td>
     </tr>
     <tr>
@@ -563,22 +563,22 @@ Procedure:
         <td style="text-align: center;">
             <img src="blind_processed/tiger/average_5x5/tiger_unblurred_15-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <p>15 Iterations, 3 PSF Iterations</p>
+            <p align="center">15 Iterations, 3 PSF Iterations</p>
         </td>
         <td style="text-align: center;">
             <img src="blind_processed/tiger/average_5x5/tiger_unblurred_15-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <p>15 Iterations, 3 PSF Iterations</p>
+            <p align="center">15 Iterations, 3 PSF Iterations</p>
         </td>
         <td style="text-align: center;">
             <img src="blind_processed/tiger/gaussian_5x5_sigma1.0/tiger_unblurred_15-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <p>15 Iterations, 3 PSF Iterations</p>
+            <p align="center">15 Iterations, 3 PSF Iterations</p>
         </td>
         <td style="text-align: center;">
             <img src="blind_processed/tiger/gaussian_5x5_sigma2.0/tiger_unblurred_15-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <p>15 Iterations, 3 PSF Iterations</p>
+            <p align="center">15 Iterations, 3 PSF Iterations</p>
         </td>
     </tr>
     <tr>
@@ -588,12 +588,12 @@ Procedure:
         <td style="text-align: center;">
             <img src="blind_processed/tiger/average_5x5/tiger_unblurred_30-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <p>30 Iterations, 3 PSF Iterations</p>
+            <p align="center">30 Iterations, 3 PSF Iterations</p>
         </td>
         <td style="text-align: center;">
             <img src="blind_processed/tiger/average_5x5/tiger_unblurred_30-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <p>30 Iterations, 3 PSF Iterations</p>
+            <p align="center">30 Iterations, 3 PSF Iterations</p>
         </td>
         <td style="text-align: center;">
             <img src="blind_processed/tiger/gaussian_5x5_sigma1.0/tiger_unblurred_30-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
@@ -603,7 +603,7 @@ Procedure:
         <td style="text-align: center;">
             <img src="blind_processed/tiger/gaussian_5x5_sigma2.0/tiger_unblurred_30-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <p>30 Iterations, 3 PSF Iterations</p>
+            <p align="center">30 Iterations, 3 PSF Iterations</p>
         </td>
     </tr>
     <tr>
@@ -613,22 +613,22 @@ Procedure:
         <td style="text-align: center;">
             <img src="blind_processed/tiger/average_5x5/tiger_unblurred_60-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <p>60 Iterations, 3 PSF Iterations</p>
+            <p align="center">60 Iterations, 3 PSF Iterations</p>
         </td>
         <td style="text-align: center;">
             <img src="blind_processed/tiger/average_5x5/tiger_unblurred_60-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <p>60 Iterations, 3 PSF Iterations</p>
+            <p align="center">60 Iterations, 3 PSF Iterations</p>
         </td>
         <td style="text-align: center;">
             <img src="blind_processed/tiger/gaussian_5x5_sigma1.0/tiger_unblurred_60-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <p>60 Iterations, 3 PSF Iterations</p>
+            <p align="center">60 Iterations, 3 PSF Iterations</p>
         </td>
         <td style="text-align: center;">
             <img src="blind_processed/tiger/gaussian_5x5_sigma2.0/tiger_unblurred_60-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <p>60 Iterations, 3 PSF Iterations</p>
+            <p align="center">60 Iterations, 3 PSF Iterations</p>
         </td>
     </tr>
     <tr>
@@ -638,22 +638,22 @@ Procedure:
         <td style="text-align: center;">
             <img src="blind_processed/tiger/average_5x5/tiger_unblurred_120-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <p>120 Iterations, 3 PSF Iterations</p>
+            <p align="center">120 Iterations, 3 PSF Iterations</p>
         </td>
         <td style="text-align: center;">
             <img src="blind_processed/tiger/average_5x5/tiger_unblurred_120-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <p>120 Iterations, 3 PSF Iterations</p>
+            <p align="center">120 Iterations, 3 PSF Iterations</p>
         </td>
         <td style="text-align: center;">
             <img src="blind_processed/tiger/gaussian_5x5_sigma1.0/tiger_unblurred_120-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <p>120 Iterations, 3 PSF Iterations</p>
+            <p align="center">120 Iterations, 3 PSF Iterations</p>
         </td>
         <td style="text-align: center;">
             <img src="blind_processed/tiger/gaussian_5x5_sigma2.0/tiger_unblurred_120-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <p>120 Iterations, 3 PSF Iterations</p>
+            <p align="center">120 Iterations, 3 PSF Iterations</p>
         </td>
     </tr>
 </table>
