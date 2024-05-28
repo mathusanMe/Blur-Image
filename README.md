@@ -552,6 +552,9 @@ Procedure:
             <p align="center" style="font-weight: bold;">Average 5x5</p>
         </td>
         <td style="text-align: center;">
+            <p align="center" style="font-weight: bold;">Average 11x11</p>
+        </td>
+        <td style="text-align: center;">
             <p align="center" style="font-weight: bold;">Gaussian 5x5, sigma: 1.0</p>
         </td>
         <td style="text-align: center;">
@@ -563,49 +566,29 @@ Procedure:
     </tr>
     <tr>
         <td style="text-align: center;">
-            <img src="images/blind_processed/tiger/average_5x5/tiger_unblurred_15-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
+            <img src="images/blind_processed/tiger/average_5x5/tiger_unblurred_15-iter_5-psf-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <p align="center">15 Iterations, 3 PSF Iterations</p>
+            <p align="center">15 Iterations, 5 PSF Iterations</p>
         </td>
         <td style="text-align: center;">
-            <img src="images/blind_processed/tiger/average_5x5/tiger_unblurred_15-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
+            <img src="images/blind_processed/tiger/average_5x5/tiger_unblurred_15-iter_5-psf-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <p align="center">15 Iterations, 3 PSF Iterations</p>
+            <p align="center">15 Iterations, 5 PSF Iterations</p>
         </td>
         <td style="text-align: center;">
-            <img src="images/blind_processed/tiger/gaussian_5x5_sigma1.0/tiger_unblurred_15-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
+            <img src="images/blind_processed/tiger/average_11x11/tiger_unblurred_15-iter_5-psf-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <p align="center">15 Iterations, 3 PSF Iterations</p>
+            <p align="center">15 Iterations, 5 PSF Iterations</p>
         </td>
         <td style="text-align: center;">
-            <img src="images/blind_processed/tiger/gaussian_5x5_sigma2.0/tiger_unblurred_15-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
+            <img src="images/blind_processed/tiger/gaussian_5x5_sigma1.0/tiger_unblurred_15-iter_5-psf-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <p align="center">15 Iterations, 3 PSF Iterations</p>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="7" style="text-align: center;"></td>
-    </tr>
-    <tr>
-        <td style="text-align: center;">
-            <img src="images/blind_processed/tiger/average_5x5/tiger_unblurred_30-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
-            <br>
-            <p align="center">30 Iterations, 3 PSF Iterations</p>
+            <p align="center">15 Iterations, 5 PSF Iterations</p>
         </td>
         <td style="text-align: center;">
-            <img src="images/blind_processed/tiger/average_5x5/tiger_unblurred_30-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
+            <img src="images/blind_processed/tiger/gaussian_5x5_sigma2.0/tiger_unblurred_15-iter_5-psf-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <p align="center">30 Iterations, 3 PSF Iterations</p>
-        </td>
-        <td style="text-align: center;">
-            <img src="images/blind_processed/tiger/gaussian_5x5_sigma1.0/tiger_unblurred_30-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
-            <br>
-            <p align="center">30 Iterations, 3 PSF Iterations</p>
-        </td>
-        <td style="text-align: center;">
-            <img src="images/blind_processed/tiger/gaussian_5x5_sigma2.0/tiger_unblurred_30-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
-            <br>
-            <p align="center">30 Iterations, 3 PSF Iterations</p>
+            <p align="center">15 Iterations, 5 PSF Iterations</p>
         </td>
     </tr>
     <tr>
@@ -613,24 +596,29 @@ Procedure:
     </tr>
     <tr>
         <td style="text-align: center;">
-            <img src="images/blind_processed/tiger/average_5x5/tiger_unblurred_60-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
+            <img src="images/blind_processed/tiger/average_5x5/tiger_unblurred_30-iter_5-psf-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <p align="center">60 Iterations, 3 PSF Iterations</p>
+            <p align="center">30 Iterations, 5 PSF Iterations</p>
         </td>
         <td style="text-align: center;">
-            <img src="images/blind_processed/tiger/average_5x5/tiger_unblurred_60-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
+            <img src="images/blind_processed/tiger/average_5x5/tiger_unblurred_30-iter_5-psf-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <p align="center">60 Iterations, 3 PSF Iterations</p>
+            <p align="center">30 Iterations, 5 PSF Iterations</p>
         </td>
         <td style="text-align: center;">
-            <img src="images/blind_processed/tiger/gaussian_5x5_sigma1.0/tiger_unblurred_60-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
+            <img src="images/blind_processed/tiger/average_11x11/tiger_unblurred_30-iter_5-psf-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <p align="center">60 Iterations, 3 PSF Iterations</p>
+            <p align="center">30 Iterations, 5 PSF Iterations</p>
         </td>
         <td style="text-align: center;">
-            <img src="images/blind_processed/tiger/gaussian_5x5_sigma2.0/tiger_unblurred_60-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
+            <img src="images/blind_processed/tiger/gaussian_5x5_sigma1.0/tiger_unblurred_30-iter_5-psf-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <p align="center">60 Iterations, 3 PSF Iterations</p>
+            <p align="center">30 Iterations, 5 PSF Iterations</p>
+        </td>
+        <td style="text-align: center;">
+            <img src="images/blind_processed/tiger/gaussian_5x5_sigma2.0/tiger_unblurred_30-iter_5-psf-iter.png" alt="unblurred tiger" width="200">
+            <br>
+            <p align="center">30 Iterations, 5 PSF Iterations</p>
         </td>
     </tr>
     <tr>
@@ -638,24 +626,59 @@ Procedure:
     </tr>
     <tr>
         <td style="text-align: center;">
-            <img src="images/blind_processed/tiger/average_5x5/tiger_unblurred_120-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
+            <img src="images/blind_processed/tiger/average_5x5/tiger_unblurred_60-iter_5-psf-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <p align="center">120 Iterations, 3 PSF Iterations</p>
+            <p align="center">60 Iterations, 5 PSF Iterations</p>
         </td>
         <td style="text-align: center;">
-            <img src="images/blind_processed/tiger/average_5x5/tiger_unblurred_120-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
+            <img src="images/blind_processed/tiger/average_5x5/tiger_unblurred_60-iter_5-psf-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <p align="center">120 Iterations, 3 PSF Iterations</p>
+            <p align="center">60 Iterations, 5 PSF Iterations</p>
         </td>
         <td style="text-align: center;">
-            <img src="images/blind_processed/tiger/gaussian_5x5_sigma1.0/tiger_unblurred_120-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
+            <img src="images/blind_processed/tiger/average_11x11/tiger_unblurred_60-iter_5-psf-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <p align="center">120 Iterations, 3 PSF Iterations</p>
+            <p align="center">60 Iterations, 5 PSF Iterations</p>
         </td>
         <td style="text-align: center;">
-            <img src="images/blind_processed/tiger/gaussian_5x5_sigma2.0/tiger_unblurred_120-iter_3-psf-iter.png" alt="unblurred tiger" width="200">
+            <img src="images/blind_processed/tiger/gaussian_5x5_sigma1.0/tiger_unblurred_60-iter_5-psf-iter.png" alt="unblurred tiger" width="200">
             <br>
-            <p align="center">120 Iterations, 3 PSF Iterations</p>
+            <p align="center">60 Iterations, 5 PSF Iterations</p>
+        </td>
+        <td style="text-align: center;">
+            <img src="images/blind_processed/tiger/gaussian_5x5_sigma2.0/tiger_unblurred_60-iter_5-psf-iter.png" alt="unblurred tiger" width="200">
+            <br>
+            <p align="center">60 Iterations, 5 PSF Iterations</p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="7" style="text-align: center;"></td>
+    </tr>
+    <tr>
+        <td style="text-align: center;">
+            <img src="images/blind_processed/tiger/average_5x5/tiger_unblurred_120-iter_5-psf-iter.png" alt="unblurred tiger" width="200">
+            <br>
+            <p align="center">120 Iterations, 5 PSF Iterations</p>
+        </td>
+        <td style="text-align: center;">
+            <img src="images/blind_processed/tiger/average_5x5/tiger_unblurred_120-iter_5-psf-iter.png" alt="unblurred tiger" width="200">
+            <br>
+            <p align="center">120 Iterations, 5 PSF Iterations</p>
+        </td>
+        <td style="text-align: center;">
+            <img src="images/blind_processed/tiger/average_11x11/tiger_unblurred_120-iter_5-psf-iter.png" alt="unblurred tiger" width="200">
+            <br>
+            <p align="center">120 Iterations, 5 PSF Iterations</p>
+        </td>
+        <td style="text-align: center;">
+            <img src="images/blind_processed/tiger/gaussian_5x5_sigma1.0/tiger_unblurred_120-iter_5-psf-iter.png" alt="unblurred tiger" width="200">
+            <br>
+            <p align="center">120 Iterations, 5 PSF Iterations</p>
+        </td>
+        <td style="text-align: center;">
+            <img src="images/blind_processed/tiger/gaussian_5x5_sigma2.0/tiger_unblurred_120-iter_5-psf-iter.png" alt="unblurred tiger" width="200">
+            <br>
+            <p align="center">120 Iterations, 5 PSF Iterations</p>
         </td>
     </tr>
 </table>
