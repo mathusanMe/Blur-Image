@@ -95,7 +95,7 @@ if __name__ == "__main__":
         60,
         120,
     ]  # Number of iterations for Blind Richardson-Lucy deconvolution
-    psf_iterations = 5  # Number of PSF iterations during each main iteration
+    psf_iterations = 25  # Number of PSF iterations during each main iteration
 
     processor = BlindImageProcessor(input_folder, output_folder)
     processor.process_folder(initial_psf_list, iterations_list, psf_iterations)
